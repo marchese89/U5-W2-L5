@@ -42,10 +42,10 @@ public class DispositivoService {
         dispositivoRepository.delete(found);
     }
 
-    public Dispositivo findByIdAndUpdate(UUID id, Dispositivo dispositivo) {
+    public Dispositivo findByIdAndUpdate(UUID id, NewDispositivoDTO newDispositivoDTO) {
         Dispositivo found = this.findById(id);
-        found.setTipologia(dispositivo.getTipologia());
-        found.setStatoDispositivo(dispositivo.getStatoDispositivo());
+        found.setTipologia(newDispositivoDTO.tipologia());
+        found.setStatoDispositivo(newDispositivoDTO.statoDispositivo());
         return dispositivoRepository.save(found);
     }
 }

@@ -44,12 +44,12 @@ public class UtenteService {
         utenteRepository.delete(found);
     }
 
-    public Utente findByIdAndUpdate(UUID id, Utente utente) {
+    public Utente findByIdAndUpdate(UUID id, NewUtenteDTO utente) {
         Utente found = this.findById(id);
-        found.setEmail(utente.getEmail());
-        found.setUsername(utente.getUsername());
-        found.setNome(utente.getNome());
-        found.setCognome(utente.getCognome());
+        found.setEmail(utente.email());
+        found.setUsername(utente.username());
+        found.setNome(utente.nome());
+        found.setCognome(utente.cognome());
         return utenteRepository.save(found);
     }
 }
