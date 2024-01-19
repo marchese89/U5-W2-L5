@@ -13,7 +13,5 @@ public record NewDispositivoDTO(
         @NotNull
         @NotEmpty
         String tipologia,
-        @NotNull
-        @NotEmpty
         StatoDispositivo statoDispositivo) {
 }

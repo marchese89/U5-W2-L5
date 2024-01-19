@@ -27,9 +27,9 @@ public class DispositivoController {
         return dispositivoService.getUsers(page, size, orderBy);
     }
 
-    @GetMapping("/{userId}")
-    public Dispositivo getUserById(@PathVariable UUID userId) {
-        return dispositivoService.findById(userId);
+    @GetMapping("/{deviceId}")
+    public Dispositivo getUserById(@PathVariable UUID deviceId) {
+        return dispositivoService.findById(deviceId);
     }
 
     @PostMapping
@@ -45,14 +45,14 @@ public class DispositivoController {
         }
     }
 
-    @PutMapping("/{userId}")
-    public Dispositivo getUserByIdAndUpdate(@PathVariable UUID userId, @RequestBody NewDispositivoDTO newDispositivoDTO) {
-        return dispositivoService.findByIdAndUpdate(userId, newDispositivoDTO);
+    @PutMapping("/{deviceId}")
+    public Dispositivo getUserByIdAndUpdate(@PathVariable UUID deviceId, @RequestBody NewDispositivoDTO newDispositivoDTO) {
+        return dispositivoService.findByIdAndUpdate(deviceId, newDispositivoDTO);
     }
 
-    @DeleteMapping("/{userId}")
+    @DeleteMapping("/{deviceId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void getUserByIdAndDelete(@PathVariable UUID userId) {
-        dispositivoService.findByIdAndDelete(userId);
+    public void getUserByIdAndDelete(@PathVariable UUID deviceId) {
+        dispositivoService.findByIdAndDelete(deviceId);
     }
 }

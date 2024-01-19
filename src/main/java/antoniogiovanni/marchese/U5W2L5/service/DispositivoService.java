@@ -1,5 +1,6 @@
 package antoniogiovanni.marchese.U5W2L5.service;
 
+import antoniogiovanni.marchese.U5W2L5.enums.StatoDispositivo;
 import antoniogiovanni.marchese.U5W2L5.exceptions.NotFoundException;
 import antoniogiovanni.marchese.U5W2L5.model.Dispositivo;
 import antoniogiovanni.marchese.U5W2L5.payloads.NewDispositivoDTO;
@@ -42,10 +43,17 @@ public class DispositivoService {
         dispositivoRepository.delete(found);
     }
 
-    public Dispositivo findByIdAndUpdate(UUID id, NewDispositivoDTO newDispositivoDTO) {
+    public Dispositivo findByIdAndUpdate(UUID id, NewDispositivoDTO dispositivo) {
         Dispositivo found = this.findById(id);
-        found.setTipologia(newDispositivoDTO.tipologia());
-        found.setStatoDispositivo(newDispositivoDTO.statoDispositivo());
+        found.setTipologia(dispositivo.tipologia());
+        found.setStatoDispositivo(dispositivo.statoDispositivo());
         return dispositivoRepository.save(found);
     }
+    public Dispositivo findByIdAndAddUser(UUID id, Dispositivo dispositivo) {
+        Dispositivo found = this.findById(id);
+        found.setUtente(dispositivo.getUtente());
+        found.setStatoDispositivo(StatoDispositivo.ASSEGNATO);
+        return dispositivoRepository.save(found);
+    }
+
 }

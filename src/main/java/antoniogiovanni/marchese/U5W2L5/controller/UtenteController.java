@@ -11,7 +11,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.UUID;
 
 @RestController
@@ -54,5 +56,20 @@ public class UtenteController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void getUserByIdAndDelete(@PathVariable UUID userId) {
         usersService.findByIdAndDelete(userId);
+    }
+
+    @PostMapping("/add_device/{userId}/{deviceId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void addDeviceToUser(@PathVariable UUID userId,@PathVariable UUID deviceId){
+        usersService.addDeviceToUser(userId,deviceId);
+    }
+
+    @PatchMapping("/{userId}/avatar")
+    public Utente uploadAvatar(@RequestParam("avatar") MultipartFile file, @PathVariable UUID userId) {
+        try {
+            return usersService.uploadAvatar(userId, file);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

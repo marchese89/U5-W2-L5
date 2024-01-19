@@ -5,17 +5,17 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 public record NewUtenteDTO(
-        @NotEmpty
-        @NotNull
+        @NotEmpty(message = "lo username non può essere vuoto")
+        @NotNull(message = "lo username non può essere null")
         String username,
-        @NotEmpty
-        @NotNull
+        @NotEmpty(message = "il nome non può essere vuoto")
+        @NotNull(message = "il nome non può essere null")
         String nome,
-        @NotEmpty
-        @NotNull
+        @NotEmpty(message = "il cognome non può essere vuoto")
+        @NotNull(message = "il cognome non può essere null")
         String cognome,
-        @NotEmpty
-        @NotNull
-        @Email
+        @NotEmpty(message = "l'email non può essere vuoto")
+        @NotNull(message = "l'email non può essere null")
+        @Email(message = "email non formattata correttamente")
         String email) {
 }

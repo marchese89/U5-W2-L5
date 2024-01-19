@@ -1,5 +1,6 @@
 package antoniogiovanni.marchese.U5W2L5.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -20,7 +21,9 @@ public class Utente {
     private String nome;
     private String cognome;
     private String email;
+    private String avatar;
     @OneToMany(mappedBy = "utente")
-    @JsonManagedReference
+    //@JsonManagedReference
+    @JsonIgnore
     private List<Dispositivo> dispositivoList;
 }
