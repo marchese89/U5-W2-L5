@@ -14,7 +14,7 @@ public record NewUtenteDTO(
         @NotEmpty(message = "il cognome non può essere vuoto")
         @NotNull(message = "il cognome non può essere null")
         String cognome,
-        @NotEmpty(message = "l'email non può essere vuoto")
+        @NotEmpty(message = "l'email non può essere vuota")
         @NotNull(message = "l'email non può essere null")
         @Email(message = "email non formattata correttamente")
         String email) {

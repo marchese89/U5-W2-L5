@@ -10,8 +10,8 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 public record NewDispositivoDTO(
-        @NotNull
-        @NotEmpty
+        @NotEmpty(message = "la tipologia non può essere vuota")
+        @NotNull(message = "la tipologia non può essere null")
         String tipologia,
         StatoDispositivo statoDispositivo) {
 }
